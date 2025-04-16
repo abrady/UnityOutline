@@ -12,6 +12,9 @@ Shader "Custom/SingleObjectEdgeDetection"
         Tags { "Queue" = "Overlay" "RenderType" = "Overlay" }
         Pass
         {
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
+                        
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -72,8 +75,8 @@ Shader "Custom/SingleObjectEdgeDetection"
                     return fixed4(1, 0, 0, 1);
                 }
                 // Otherwise, output transparent (or another color if desired).
-                // return fixed4(0, 0, 0, 0);
-                return fixed4(0,1,0,1);
+                return fixed4(0, 0, 0, 0);
+                // return fixed4(0,1,0,1);
             }
             ENDCG
         }
